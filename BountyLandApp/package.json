@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "npm run clean && node_modules/react-native/packager/packager.sh --reset-cache",
+    "lint": "standard",
     "test": "jest",
     "clean": "rm -fr $TMPDIR/react-* && watchman watch-del-all"
   },
@@ -29,7 +30,8 @@
     "flow-bin": "0.43.1",
     "jest": "19.0.2",
     "react-test-renderer": "16.0.0-alpha.6",
-    "standard": "^10.0.1"
+    "standard": "^10.0.1",
+    "watchman": "^0.1.8"
   },
   "jest": {
     "preset": "react-native"
