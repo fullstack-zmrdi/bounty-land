@@ -2,6 +2,7 @@
 
 import firebase from 'firebase'
 import store from './stores/global-store'
+import geolocationWatcher from './stores/geolocation-watcher'
 
 let config = {
   apiKey: 'AIzaSyATqCqBIQKq57sq7537U_qFV-zB8aB0Dpw',
@@ -25,6 +26,7 @@ export const isAuthenticated = () => {
 
 export const facebookProvider = new firebase.auth.FacebookAuthProvider()
 
+let stopGeoWatcher
 export const login = (user) => {
   const {uid, displayName, email, photoURL} = user
   window.localStorage.setItem(storageKey, uid)
@@ -35,11 +37,16 @@ export const login = (user) => {
     photoURL
   })
   store.profile = user
+  stopGeoWatcher = geolocationWatcher((coords) => {
+    db.ref('/users').child(uid).update({
+      coords: coords
+    })
+  })
 }
 
 export const logout = () => {
   window.localStorage.removeItem(storageKey)
-
+  stopGeoWatcher()
   if (store.profile) {
     db.ref('/users').child(store.profile.uid).update({
       isOnline: false
