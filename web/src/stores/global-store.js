@@ -1,11 +1,10 @@
-/* global Profile */
 import {
   extendObservable
 } from 'mobx'
 // import moment from 'moment'
 import mobxStored from 'mobx-stored'
 import {db} from '../firebase'
-import geolocation from './geolocation-watcher'
+import './geolocation-watcher'
 
 console.log(db)
 
