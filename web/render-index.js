@@ -16,11 +16,6 @@ export default (appHtml, cssLink = false) => {
       <body>
         <div id='wrapper' dangerouslySetInnerHTML={{__html: appHtml}} />
         <script src='/bundle.js' />
-        <script dangerouslySetInnerHTML={{
-          __html: `function initMap() {
-            console.log('map init')
-          }`
-        }} />
         <script async defer
           src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&callback=initMap`} />
       </body>
