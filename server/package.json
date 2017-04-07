@@ -1,0 +1,19 @@
+{
+  "scripts": {
+    "lint": "standard",
+    "pretest": "standard",
+    "start": "node server",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^19.0.2",
+    "standard": "^10.0.1"
+  },
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "koa": "^2.2.0",
+    "koa-body": "^1.6.0",
+    "koa-router": "^7.1.1",
+    "stripe": "^4.17.1"
+  }
+}
