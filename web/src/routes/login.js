@@ -2,7 +2,7 @@ import React from 'react'
 import {
   Redirect
 } from 'react-router-dom'
-import { auth, facebookProvider } from '../firebase'
+import { auth, facebookProvider, setUser } from '../firebase'
 
 class Login extends React.Component {
   state = {
@@ -21,6 +21,7 @@ class Login extends React.Component {
   login = () => {
     auth.signInWithPopup(facebookProvider).then(({credential: {accessToken}, user}) => {
       this.setState({redirectToReferrer: true})
+      setUser(user)
     }).catch(function ({code, message, email, credential}) {
       console.error(message)
     })

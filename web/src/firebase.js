@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+import store from './stores/global-store'
 
 let config = {
   apiKey: 'AIzaSyATqCqBIQKq57sq7537U_qFV-zB8aB0Dpw',
@@ -21,3 +22,7 @@ export const isAuthenticated = () => {
 }
 
 export const facebookProvider = new firebase.auth.FacebookAuthProvider()
+
+export const setUser = (user) => {
+  store.profile = user
+}
