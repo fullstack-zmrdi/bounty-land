@@ -17,7 +17,6 @@ const navigatorButtons = {
 
 class Home extends Component {
   static navigatorStyle = {
-
     ...Platform.select({
       ios: { },
       android: {

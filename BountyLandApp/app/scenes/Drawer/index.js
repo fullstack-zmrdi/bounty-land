@@ -1,23 +1,43 @@
-import React, { Component } from 'react'
-import { View, Platform } from 'react-native'
-import * as firebase from 'firebase'
-import Toast from 'react-native-toast'
-import { Container, Content, Card, CardItem, Text, Body, H2, Button,  Row, Form, Item, Label, Input } from 'native-base'
+import React, {Component} from 'react'
+
+import { View, NativeModules } from 'react-native'
+
+import { Container, Content, Button, Text, List, ListItem, Left, Body, Icon } from 'native-base'
+import colors from 'material-colors'
+
 
 class Drawer extends Component {
-    render () {
-        return (
-            <View>
+  pushScreen (screen) {
+    this.props.navigator.push(screen)
+    this.props.navigator.toggleDrawer({ to: 'closed', side: 'left', animated: true })
+  }
 
-            </View>
-        )
-    }
+  render () {
+    return (
+      <Container style={{ backgroundColor: colors.white, maxWidth: 320 }}>
+        <Content>
+          <ListItem onPress={() => NativeModules.UtilsModule.showDevMenu()}>
+            <Text>{'dev menu'}</Text>
+          </ListItem>
+          <ListItem onPress={() => this.pushScreen({
+            screen: 'PROFILE',
+            title: 'profile'
+          })}>
+            <Text>{'profile'}</Text>
+          </ListItem>
+          <ListItem>
+            <Text>{'challenges'}</Text>
+          </ListItem>
+          <ListItem>
+            <Text>{'wallet'}</Text>
+          </ListItem>
+          <ListItem>
+            <Text>{'about'}</Text>
+          </ListItem>
+        </Content>
+      </Container>
+    )
+  }
 }
 
 export default Drawer
-
-
-
-
-
-
