@@ -5,7 +5,7 @@ import { DeviceEventEmitter, Platform, AsyncStorage } from 'react-native'
 import { Navigation } from 'react-native-navigation'
 import * as firebase from 'firebase'
 
-import { registerScenes } from './scenes'
+import { registerScreens } from './scenes'
 // import czechTranslations from './locales/cs'
 // import englishTranslations from './locales/en'
 
@@ -19,7 +19,7 @@ const handleMissing = (scope) => `${scope || 'unknown'}`
 console.disableYellowBox = true
 
 // Register scenes
-registerScenes()
+registerScreens()
 
 class App {
   constructor () {
