@@ -1,4 +1,4 @@
-import { DeviceEventEmitter, AsyncStorage } from 'react-native' //eslint-disable-line
+import { DeviceEventEmitter, AsyncStorage, Platform } from 'react-native' //eslint-disable-line
 import { FBLoginManager } from 'react-native-facebook-login'
 import { GoogleSignin } from 'react-native-google-signin'
 
@@ -45,7 +45,7 @@ class Auth {
     FBLoginManager.loginWithPermissions(['email', 'user_friends'], (error, data) => {
       if (!error) {
         console.log('facebook sign in', data)
-        AsyncStorage.setAuthData(data)
+        this.setAuthData(data)
         .then(() => {
           this.dispatchAuthChange({ isAuthenticated: true, type: 'facebook', user: data })
         })
@@ -57,14 +57,14 @@ class Auth {
 
   signInGoogle () {
     GoogleSignin.configure({
-      iosClientId: googleSignIn.iosClientId // only for iOS
+      iosClientId: Platform.OS === 'ios' ? googleSignIn.iosClientId : null // only for iOS
     })
     .then(() => {
       return GoogleSignin.signIn()
     })
     .then((user) => {
       console.log('google sign in', user)
-      AsyncStorage.setAuthData(user)
+      this.setAuthData(user)
       .then(() => {
         this.dispatchAuthChange({ isAuthenticated: true, type: 'google', user })
       })
@@ -97,7 +97,7 @@ class Auth {
     FBLoginManager.logout((error, data) => {
       if (!error) {
         console.log('facebook sign out succ', data)
-        this.auth.dispatchAuthChange({ isAuthenticated: false, type: 'facebook', user: data })
+        this.dispatchAuthChange({ isAuthenticated: false, type: 'facebook', user: data })
       } else {
         console.log('facebook sign out err', error)
       }
@@ -108,7 +108,7 @@ class Auth {
     GoogleSignin.signOut()
     .then(() => {
       console.log('google sign out succ')
-      this.auth.dispatchAuthChange({ isAuthenticated: false, type: 'google' })
+      this.dispatchAuthChange({ isAuthenticated: false, type: 'google' })
     })
     .catch((err) => {
       console.log('google sign out err', err)
