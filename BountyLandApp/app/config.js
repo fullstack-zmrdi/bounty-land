@@ -9,5 +9,5 @@ export const firebaseConfig = {
 
 
 export const googleSignIn = {
-  iosClientId: '978655327403-p0p3g6m8jc9s60n5to8hp7r34kp196fd.apps.googleusercontent.com'
+  iosClientId: '21402723903-8eo1e4t6f8pdjfmsmfa20andvra5r3me.apps.googleusercontent.com'
 }

@@ -12,7 +12,7 @@ import com.magus.fblogin.FacebookLoginPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.facebook.react.ReactPackage;
 import com.reactnativenavigation.NavigationApplication;
-
+import com.airbnb.android.react.maps.MapsPackage;
 
 import java.util.Arrays;
 import java.util.List;
@@ -37,7 +37,8 @@ public class MainApplication extends NavigationApplication {
           new RCTToastPackage(),
           new RNGoogleSigninPackage(),
           new FacebookLoginPackage(),
-          new RCTCameraPackage()
+          new RCTCameraPackage(),
+            new MapsPackage()
     );
   }
 }

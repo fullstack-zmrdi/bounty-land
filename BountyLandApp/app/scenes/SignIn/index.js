@@ -8,9 +8,7 @@ import { Container, Content, Card, CardItem, Text, Body, H2, Button,  Row, Form,
 import Auth from '../../auth'
 
 class SignIn extends Component {
-  static navigatorStyle = {
-
-  }
+  static navigatorStyle = {}
 
   constructor () {
     super()
