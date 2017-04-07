@@ -2,7 +2,7 @@ import React from 'react'
 import {
   Redirect
 } from 'react-router-dom'
-import { auth, facebookProvider, setUser } from '../firebase'
+import { auth, facebookProvider, login } from '../firebase'
 
 class Login extends React.Component {
   state = {
@@ -18,9 +18,9 @@ class Login extends React.Component {
     })
   }
 
-  login = () => {
+  processLogin = () => {
     auth.signInWithPopup(facebookProvider).then(({user}) => {
-      setUser(user.toJSON())
+      login(user.toJSON())
       this.setState({redirectToReferrer: true})
     }).catch(function ({code, message, email, credential}) {
       console.error(message)
@@ -39,7 +39,7 @@ class Login extends React.Component {
         {from && (
           <p>You must log in to view the page at {from.pathname}</p>
         )}
-        <button onClick={this.login}>Login via Facebook</button>
+        <button onClick={this.processLogin}>Login via Facebook</button>
       </section>
     )
   }

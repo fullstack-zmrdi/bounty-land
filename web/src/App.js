@@ -9,27 +9,24 @@ import * as Routes from './routes'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
-import { auth, storageKey, isAuthenticated, setUser } from './firebase'
+import { auth, storageKey, isAuthenticated, login, logout } from './firebase'
 
 class App extends React.Component {
   componentDidMount () {
     auth.onAuthStateChanged(user => {
       if (user) {
-        window.localStorage.setItem(storageKey, user.uid)
-        setUser(user.toJSON())
-        this.setState({uid: user.uid})
+        login(user.toJSON())
+        this.setState({logged: true})
       } else {
-        window.localStorage.removeItem(storageKey)
-        this.setState({uid: null})
-        setUser({})
+        logout()
+        this.setState({logged: false})
       }
     })
   }
 
-  logout = () => {
-    auth.signOut()
-      .then(() => this.setState({uid: null}))
-      .catch((message) => console.error('logout error: ', message))
+  processLogout = () => {
+    this.setState({logged: false})
+    logout()
   }
 
   render () {
@@ -44,7 +41,7 @@ class App extends React.Component {
               <ProtectedLink to='/wallet'>Wallet</ProtectedLink>
               {!isAuthenticated()
                 ? <li><Link to='/login'>Login</Link></li>
-                : <li onClick={this.logout}>Logout</li>
+                : <li onClick={logout}>Logout</li>
               }
             </ul>
 

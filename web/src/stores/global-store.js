@@ -7,7 +7,7 @@ import mobxStored from 'mobx-stored'
 
 const defaultState = {
   token: null,
-  profile: {},
+  profile: null,
   alerts: [],
   tokenCreatedAt: null,
   lastVisitedProfiles: []
