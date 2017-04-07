@@ -13,6 +13,19 @@ class Profile extends Component {
     this.auth = Auth
   }
 
+  state = {
+    authData: {}
+  }
+
+  componentDidMount () {
+    this.auth.getAuthData()
+    .then((authData) => {
+      console.log('have auth data', authData)
+      this.setState({ authData })
+    })
+  }
+
+
   signOut () {
     this.auth.signOut()
   }
@@ -21,8 +34,8 @@ class Profile extends Component {
       return (
         <Container style={{ padding: 16 }}>
           <Content>
-            <ListItem><Text>{this.state.user.email}</Text></ListItem>
-            <Button onPress={() => this.signOut()}><Text>{I18n.t('sign_out')}</Text></Button>
+            <ListItem><Text>{this.state.authData.isAuthenticated}</Text></ListItem>
+            <Button onPress={() => this.signOut()}><Text>Sign out</Text></Button>
           </Content>
         </Container>
       )

@@ -41,7 +41,7 @@ class Auth {
   }
 
   signInFacebook () {
-    FBLoginManager.setLoginBehavior(FBLoginManager.LoginBehaviors.Web) // defaults to Native
+    FBLoginManager.setLoginBehavior(FBLoginManager.LoginBehaviors.Native) // defaults to Native
     FBLoginManager.loginWithPermissions(['email', 'user_friends'], (error, data) => {
       if (!error) {
         console.log('facebook sign in', data)
@@ -57,7 +57,7 @@ class Auth {
 
   signInGoogle () {
     GoogleSignin.configure({
-      iosClientId: Platform.OS === 'ios' ? googleSignIn.iosClientId : null // only for iOS
+      iosClientId: Platform.OS === 'ios' ? googleSignIn.iosClientId : googleSignIn.webClientId // only for iOS
     })
     .then(() => {
       return GoogleSignin.signIn()
