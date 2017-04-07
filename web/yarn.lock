@@ -5464,6 +5464,10 @@ react-simple-dropdown@^2.0.0:
   dependencies:
     classnames "^2.1.2"
 
+react-stripe-checkout@^2.2.5:
+  version "2.2.5"
+  resolved "https://registry.yarnpkg.com/react-stripe-checkout/-/react-stripe-checkout-2.2.5.tgz#1369fb44f522cfa21ba451d6be97d1a2b86ff84a"
+
 react@^15.4.2:
   version "15.4.2"
   resolved "https://registry.yarnpkg.com/react/-/react-15.4.2.tgz#41f7991b26185392ba9bae96c8889e7e018397ef"

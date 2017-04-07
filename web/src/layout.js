@@ -5,7 +5,7 @@ import {
   observer
 } from 'mobx-react'
 
-import globalState from './stores/global-state'
+import globalStore from './stores/global-store'
 import Dropdown, { DropdownTrigger, DropdownContent } from 'react-simple-dropdown'
 
 import {observable} from 'mobx'
