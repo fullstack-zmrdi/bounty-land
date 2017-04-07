@@ -1,0 +1,17 @@
+[ignore]
+.*/node_modules/react-dom-stream/*
+
+[include]
+./src/**/*.js
+
+[libs]
+./flow-typed
+#./node_modules/mobx/lib/mobx.js.flow #enable when this is merged https://github.com/mobxjs/mobx/pull/933
+
+[options]
+esproposal.decorators=ignore
+suppress_comment= \\(.\\|\n\\)*\\@flow-skip-next-line.*
+unsafe.enable_getters_and_setters=true
+module.name_mapper='.*\(.scss\)' -> 'css-module-flow'
+module.name_mapper='.*\(.css\)' -> 'css-module-flow'
+
