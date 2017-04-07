@@ -46,7 +46,7 @@ export const login = (user) => {
 
 export const logout = () => {
   window.localStorage.removeItem(storageKey)
-  stopGeoWatcher()
+  stopGeoWatcher && stopGeoWatcher()
   if (store.profile) {
     db.ref('/users').child(store.profile.uid).update({
       isOnline: false

@@ -6,8 +6,6 @@ import mobxStored from 'mobx-stored'
 import {db} from '../firebase'
 import './geolocation-watcher'
 
-console.log(db)
-
 const defaultState = {
   token: null,
   profile: null,
