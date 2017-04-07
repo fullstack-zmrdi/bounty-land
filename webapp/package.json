@@ -5,11 +5,10 @@
   "dependencies": {
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
-    "react-router": "4.0.0"
+    "react-router": "4.0.0",
+    "react-router-dom": "^4.0.0"
   },
   "devDependencies": {
-    "husky": "^0.13.3",
-    "standard": "^10.0.1",
     "autoprefixer": "6.7.2",
     "babel-core": "6.22.1",
     "babel-eslint": "7.1.1",
@@ -29,12 +28,14 @@
     "fs-extra": "0.30.0",
     "html-webpack-plugin": "2.24.0",
     "http-proxy-middleware": "0.17.3",
+    "husky": "^0.13.3",
     "jest": "18.1.0",
     "json-loader": "0.5.4",
     "object-assign": "4.1.1",
     "postcss-loader": "1.2.2",
     "promise": "7.1.1",
     "react-dev-utils": "^0.5.2",
+    "standard": "^10.0.1",
     "style-loader": "0.13.1",
     "url-loader": "0.5.7",
     "webpack": "1.14.0",
