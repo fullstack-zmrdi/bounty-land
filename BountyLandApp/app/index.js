@@ -68,7 +68,7 @@ class App {
   startAppAsUnauthenticatedUser () {
     Navigation.startSingleScreenApp({
       screen: {
-        screen: 'SIGN_IN',
+        screen: 'HOME',
         title: 'Bounty Land'
       }
     })
