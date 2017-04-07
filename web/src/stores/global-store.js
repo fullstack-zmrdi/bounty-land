@@ -10,7 +10,7 @@ console.log(db)
 
 const defaultState = {
   token: null,
-  profile: {},
+  profile: null,
   alerts: [],
   tokenCreatedAt: null,
   lastVisitedProfiles: []
