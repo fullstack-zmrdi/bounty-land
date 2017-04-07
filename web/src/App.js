@@ -16,8 +16,8 @@ class App extends React.Component {
     auth.onAuthStateChanged(user => {
       if (user) {
         window.localStorage.setItem(storageKey, user.uid)
+        setUser(user.toJSON())
         this.setState({uid: user.uid})
-        setUser(user)
       } else {
         window.localStorage.removeItem(storageKey)
         this.setState({uid: null})

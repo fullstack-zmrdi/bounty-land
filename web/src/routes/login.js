@@ -19,9 +19,9 @@ class Login extends React.Component {
   }
 
   login = () => {
-    auth.signInWithPopup(facebookProvider).then(({credential: {accessToken}, user}) => {
+    auth.signInWithPopup(facebookProvider).then(({user}) => {
+      setUser(user.toJSON())
       this.setState({redirectToReferrer: true})
-      setUser(user)
     }).catch(function ({code, message, email, credential}) {
       console.error(message)
     })

@@ -23,6 +23,6 @@ export const isAuthenticated = () => {
 
 export const facebookProvider = new firebase.auth.FacebookAuthProvider()
 
-export const setUser = (user) => {
+export const setUserToStore = (user) => {
   store.profile = user
 }
