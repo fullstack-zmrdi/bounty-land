@@ -1,3 +1,5 @@
+/* global localStorage */
+
 import firebase from 'firebase'
 import store from './stores/global-store'
 

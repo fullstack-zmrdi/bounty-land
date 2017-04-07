@@ -3,9 +3,10 @@ import {Tabs, Tab} from 'material-ui/Tabs'
 import {observer} from 'mobx-react'
 import {observable} from 'mobx'
 import StripeCheckout from 'react-stripe-checkout'
-
+import globalStore from '../stores/global-store'
 const state = observable({
-  tab: 'top up'
+  tab: 'top up',
+  topUpAmount: 200
 })
 
 const Wallet = observer(() => (
@@ -24,8 +25,11 @@ const Wallet = observer(() => (
     }}>
       <div>
         <StripeCheckout
+          email={globalStore.profile.email}
+          amount={state.topUpAmount}
+          currency={'CZK'}
           token={(token) => {
-
+            console.log('token', token)
           }}
           stripeKey='pk_test_74D3aKbuhEfxPvoe3HHDGKLb' />
       </div>

@@ -4,6 +4,10 @@ import {
 } from 'mobx'
 // import moment from 'moment'
 import mobxStored from 'mobx-stored'
+import {db} from '../firebase'
+import geolocation from './geolocation-watcher'
+
+console.log(db)
 
 const defaultState = {
   token: null,
