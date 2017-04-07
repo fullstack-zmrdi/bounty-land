@@ -8,7 +8,7 @@ class Drawer extends Component {
     render () {
         return (
             <View>
-                
+
             </View>
         )
     }
