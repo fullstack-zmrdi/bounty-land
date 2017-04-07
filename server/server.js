@@ -1,13 +1,15 @@
+require('dotenv').config()
 const keySecret = process.env.SECRET_KEY
 const stripe = require('stripe')(keySecret)
-const app = require('koa')()
+const Koa = require('koa')
+const app = new Koa()
 const router = require('koa-router')()
 const koaBody = require('koa-body')()
 
 app.use(koaBody)
 
-router.post('/users', async () => {
-  const {body} = this.request
+router.post('/charge', async (ctx) => {
+  const {body} = ctx.request
 
   console.log(body)
   // => POST body
@@ -23,9 +25,11 @@ router.post('/users', async () => {
     customer: customer.id
   })
 
-  this.body = JSON.stringify(chargeRes)
+  ctx.body = JSON.stringify(chargeRes)
 })
 
 app.use(router.routes())
 
-app.listen(process.env.PORT)
+app.listen(process.env.PORT, () => {
+  console.log('listening on port', process.env.PORT)
+})
