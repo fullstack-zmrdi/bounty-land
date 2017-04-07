@@ -122,7 +122,7 @@ class Home extends Component {
   selectLocationForChallenge (challengeData) {
     console.log(challengeData)
     this.props.navigator.dismissModal()
-    this.props.navigator.setTitle({ title: I18n.t('select_location') })
+    this.props.navigator.setTitle({ title: 'select_location' })
     this.props.navigator.setButtons({
       ...navigatorButtons,
       fab: {
@@ -154,7 +154,7 @@ class Home extends Component {
           radiusInMeters: this.state.selectedLocationRadius
         }
       })
-      .then(() => this.props.navigator.showSnackbar({ text: I18n.t('challenge_published') }))
+      .then(() => this.props.navigator.showSnackbar({ text: 'challenge_published'}))
       .catch((err) => this.props.navigator.showSnackbar({ text: err.message}))
 
     this.props.navigator.setTitle('')
@@ -210,7 +210,7 @@ class Home extends Component {
         {this.state.selectLocation
           ? (
             <View style={{ alignSelf: 'flex-start', borderRadius: 2, elevation: 4, paddingVertical: 8, backgroundColor: colors.white, margin: 16 }}>
-              <Text style={{ paddingHorizontal: 16 }}>{I18n.t('area_radius')} {this.state.selectedLocationRadius}m</Text>
+              <Text style={{ paddingHorizontal: 16 }}>{'area_radius'} {this.state.selectedLocationRadius}m</Text>
               <Slider
                 style={{ width: 200 }}
                 step={5}
