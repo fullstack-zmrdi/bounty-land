@@ -1,7 +1,7 @@
 import React, {PropTypes, Component} from 'react'
 
 import mobxReact, {observer} from 'mobx-react'
-import {Input} from './bulma/index'
+import TextField from 'material-ui/TextField'
 
 import _ from 'lodash'
 import {extendObservable, ObservableMap} from 'mobx'
@@ -62,11 +62,11 @@ class BoundInput extends Component {
     propsToPass.hint = errMsg
     delete propsToPass.validation
 
-    return <Input
+    return <TextField
       name={name}
       className={cln}
       autoComplete={props.autocomplete}
-      value={val}
+      defaultValue={val}
       inputRef={this.props.inputRef}
       onChange={(ev) => {
         const {value} = ev.target
