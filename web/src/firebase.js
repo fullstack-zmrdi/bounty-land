@@ -47,3 +47,12 @@ export const logout = () => {
       .catch((message) => console.error('logout error: ', message))
   }
 }
+
+export const setUserOffline = () => {
+  if (!store.profile) return false
+  db.ref('/users').child(store.profile.uid).update({
+    isOnline: false
+  })
+}
+
+window.onbeforeunload = setUserOffline
