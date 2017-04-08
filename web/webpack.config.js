@@ -24,7 +24,7 @@ let scssConfig
 if (process.env.NODE_ENV === 'production') {
   plugins = plugins.concat([
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new ExtractTextPlugin('tgm.css'),
+    new ExtractTextPlugin('bounty-land.css'),
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false
