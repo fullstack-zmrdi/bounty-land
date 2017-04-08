@@ -3,6 +3,24 @@ import {
   Redirect
 } from 'react-router-dom'
 import { auth, facebookProvider, login } from '../firebase'
+import styled from 'styled-components';
+import { RaisedButton } from 'material-ui'
+
+const LoginScreen = styled.div`
+  background: linear-gradient(180deg, #00BBD3 0%, #AF9A38 100%);
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Logo = styled.img`
+  width: 50%;
+  height: auto;
+  margin-bottom: 30px;
+`
 
 class Login extends React.Component {
   state = {
@@ -32,12 +50,13 @@ class Login extends React.Component {
     const {redirectToReferrer} = this.state
 
     return (
-      <section>
+      <LoginScreen>
         {redirectToReferrer && (
           <Redirect to={from || '/'} />
         )}
-        <button onClick={this.processLogin}>Login via Facebook</button>
-      </section>
+        <Logo src="/images/logo.png" />
+        <RaisedButton onTouchTap={this.processLogin} label="Login" />
+      </LoginScreen>
     )
   }
 }
