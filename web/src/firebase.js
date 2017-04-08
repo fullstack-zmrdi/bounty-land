@@ -68,7 +68,7 @@ export const setUserOffline = () => {
   })
 }
 
-setInterval(() => {
+export const intervalOnline = setInterval(() => {
   if (!globalStore.profile) return false
   db.ref('/users').child(globalStore.profile.uid).update({
     lastTimeOnline: new Date()
