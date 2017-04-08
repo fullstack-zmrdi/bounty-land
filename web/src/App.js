@@ -45,7 +45,7 @@ class App extends React.Component {
             <div>
               {isAuthenticated() && <div>
                 <AppBar
-                  title='Bounty Land'
+                  title={globalStore.title}
                   iconClassNameRight='muidocs-icon-navigation-expand-more'
                   onLeftIconButtonTouchTap={this.toggleMenu}
                 /><Drawer
@@ -56,7 +56,7 @@ class App extends React.Component {
                     globalStore.menuIsOpen = open
                   }}
                 >
-                  <Link to='/'><MenuItem onTouchTap={this.toggleMenu}>Map</MenuItem></Link>
+                  <MenuItem onTouchTap={this.toggleMenu}><Link to='/'>Map</Link></MenuItem>
                   <ProtectedLink to='/profile'>Profile</ProtectedLink>
                   <ProtectedLink to='/wallet'>Wallet</ProtectedLink>
                   {!isAuthenticated()
@@ -70,6 +70,7 @@ class App extends React.Component {
               <Route exact path='/login' component={Routes.Login} />
               <ProtectedRoute exact path='/profile' component={Routes.Profile} />
               <ProtectedRoute path='/about' component={Routes.AboutUs} />
+              <ProtectedRoute path='/add' component={Routes.AddChallenge} />
               <ProtectedRoute path='/wallet' component={Routes.Wallet} />
             </div>
           </Router>
@@ -81,16 +82,14 @@ class App extends React.Component {
 const ProtectedLink = ({to, children}) => {
   if (!isAuthenticated()) return null
 
-  return <Link to={to}><MenuItem onTouchTap={() => {
+  return <MenuItem onTouchTap={() => {
     globalStore.menuIsOpen = false
-  }}>{children}</MenuItem></Link>
+  }} ><Link to={to}>{children}</Link></MenuItem>
 }
 
 const ProtectedRoute = ({component: Component, ...rest}) => (
   <Route {...rest} render={renderProps => (
-    isAuthenticated() ? (
-      <Component {...renderProps} />
-    ) : (
+    isAuthenticated() ? <Component {...renderProps} /> : (
       <Redirect to={{
         pathname: '/login',
         state: {from: renderProps.location}

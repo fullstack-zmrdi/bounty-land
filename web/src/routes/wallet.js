@@ -16,6 +16,9 @@ const state = observable({
 
 @observer
 class Wallet extends Component {
+  componentDidMount () {
+    globalStore.title = 'Wallet'
+  }
   render () {
     return <Tabs value={state.tab} onChange={(tab) => {
       state.tab = tab

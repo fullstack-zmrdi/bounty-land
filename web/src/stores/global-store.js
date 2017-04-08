@@ -8,6 +8,7 @@ import './geolocation-watcher'
 const defaultState = {
   token: null,
   profile: null,
+  title: 'Map',
   alerts: [],
   tokenCreatedAt: null,
   lastVisitedProfiles: [],

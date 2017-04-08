@@ -1,12 +1,20 @@
-import React from 'react'
 import {observer} from 'mobx-react'
-import store from '../stores/global-store'
+import globalStore from '../stores/global-store'
+import React, { Component } from 'react'
+import {Card} from 'material-ui/Card';
+@observer
+class Profile extends Component {
+  componentDidMount () {
+    globalStore.title = 'Profile'
+  }
+  render () {
+    const {profile} = globalStore
 
-const Profile = observer(() => (
-  <div>
-    <h2>Profile</h2>
-    <span>{JSON.stringify(store.profile)}</span>
-  </div>
-))
+    return <Card>
+      <h2>{profile.displayName}</h2>
+      <img src={profile.photoURL} alt={profile.displayName} />
+    </Card>
+  }
+}
 
 export default Profile
