@@ -14,7 +14,6 @@ class Home extends Component {
 
   componentWillMount () {
     db.ref('/users').on('value', (users) => {
-      console.log(Object.values(users.val()))
       this.users = Object.values(users.val())
     })
 
@@ -29,25 +28,18 @@ class Home extends Component {
   }
 
   render () {
-    const users = this.users.map((user) => {
-      const {coords} = user
-      if (coords) {
-        return <Marker icon={{
+    const users = this.users
+      .filter(({coords}) => coords)
+      .map(({coords, ...user}) => <Marker icon={{
           url: user.photoURL,
           anchor: new google.maps.Point(32, 32),
           scaledSize: new google.maps.Size(64, 64)
-        }} onClick={(ev) => {
-
-        }} key={user.uid} position={{lat: coords.latitude, lng: coords.longitude}}
+        }}
+          onClick={(ev) => {}}
+          key={user.uid} position={{lat: coords.latitude, lng: coords.longitude}}
           name={'Current location'} style={{
             opacity: 0.5
-          }} />
-      }
-      return <Marker />
-    })
-    // const challenges = this.challenges.map((challenge) => {
-    //   return <Marker />
-    // })
+          }} />)
     return (
       <Async promise={window.gmapsPromise} before={() => {
         return <div />
