@@ -45,7 +45,11 @@ class Home extends Component {
       <Async promise={window.gmapsPromise} before={() => {
         return <div />
       }} then={() => {
-        return <Map google={window.google} zoom={14} className='map'
+        return <Map
+          google={window.google}
+          zoom={14}
+          options={{cooperative: "greedy"}}
+          className='map'
           initialCenter={{
             lat: 50.08804,
             lng: 14.42076

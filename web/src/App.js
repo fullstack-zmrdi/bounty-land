@@ -45,7 +45,7 @@ class App extends React.Component {
             <div>
               {isAuthenticated() && <div>
                 <AppBar
-                  title='Title'
+                  title='Bounty Land'
                   iconClassNameRight='muidocs-icon-navigation-expand-more'
                   onLeftIconButtonTouchTap={this.toggleMenu}
                 /><Drawer
@@ -56,7 +56,7 @@ class App extends React.Component {
                     globalStore.menuIsOpen = open
                   }}
                 >
-                  <MenuItem onTouchTap={this.toggleMenu}><Link to='/'>Map</Link></MenuItem>
+                  <Link to='/'><MenuItem onTouchTap={this.toggleMenu}>Map</MenuItem></Link>
                   <ProtectedLink to='/profile'>Profile</ProtectedLink>
                   <ProtectedLink to='/wallet'>Wallet</ProtectedLink>
                   {!isAuthenticated()
@@ -81,9 +81,9 @@ class App extends React.Component {
 const ProtectedLink = ({to, children}) => {
   if (!isAuthenticated()) return null
 
-  return <MenuItem onTouchTap={() => {
+  return <Link to={to}><MenuItem onTouchTap={() => {
     globalStore.menuIsOpen = false
-  }} ><Link to={to}>{children}</Link></MenuItem>
+  }}>{children}</MenuItem></Link>
 }
 
 const ProtectedRoute = ({component: Component, ...rest}) => (
