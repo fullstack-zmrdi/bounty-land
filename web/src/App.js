@@ -15,12 +15,9 @@ import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import { Drawer, MenuItem, AppBar } from 'material-ui'
 import { auth, isAuthenticated, login, logout } from './firebase'
 import injectTapEventPlugin from 'react-tap-event-plugin'
+import globalStore from './stores/global-store'
 
 injectTapEventPlugin()
-
-const AppStore = observable({
-  menuIsOpen: false
-})
 
 @observer
 class App extends React.Component {
@@ -28,20 +25,17 @@ class App extends React.Component {
     auth.onAuthStateChanged(user => {
       if (user) {
         login(user.toJSON())
-        this.setState({logged: true})
       } else {
         logout()
-        this.setState({logged: false})
       }
     })
   }
 
   toggleMenu = () => {
-    AppStore.menuIsOpen = !AppStore.menuIsOpen
+    globalStore.menuIsOpen = !globalStore.menuIsOpen
   }
 
   processLogout = () => {
-    this.setState({logged: false})
     this.toggleMenu()
     logout()
   }
@@ -50,18 +44,18 @@ class App extends React.Component {
     return (
       <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
         <div>
-          <AppBar
-            title="Title"
-            iconClassNameRight="muidocs-icon-navigation-expand-more"
-            onLeftIconButtonTouchTap={this.toggleMenu}
-          />
           <Router>
             <div>
-              <Drawer
+              {isAuthenticated() && <div>
+                <AppBar
+                  title="Title"
+                  iconClassNameRight="muidocs-icon-navigation-expand-more"
+                  onLeftIconButtonTouchTap={this.toggleMenu}
+                /><Drawer
                 docked={false}
                 width={200}
-                open={AppStore.menuIsOpen}
-                onRequestChange={(open) => AppStore.menuIsOpen = open}
+                open={globalStore.menuIsOpen}
+                onRequestChange={(open) => globalStore.menuIsOpen = open}
               >
                 <MenuItem onTouchTap={this.toggleMenu}><Link to='/'>Home</Link></MenuItem>
                 <ProtectedLink to='/profile'>Profile</ProtectedLink>
@@ -71,11 +65,12 @@ class App extends React.Component {
                   : <MenuItem onTouchTap={this.processLogout}>Logout</MenuItem>
                 }
               </Drawer>
+              </div>}
 
-              <Route exact path='/' component={Routes.Home} />
-              <Route exact path='/profile' component={Routes.Profile} />
+              <ProtectedRoute exact path='/' component={Routes.Home} />
               <Route exact path='/login' component={Routes.Login} />
-              <Route path='/about' component={Routes.AboutUs} />
+              <ProtectedRoute exact path='/profile' component={Routes.Profile} />
+              <ProtectedRoute path='/about' component={Routes.AboutUs} />
               <ProtectedRoute path='/wallet' component={Routes.Wallet} />
             </div>
           </Router>
@@ -87,7 +82,7 @@ class App extends React.Component {
 const ProtectedLink = ({to, children}) => {
   if (!isAuthenticated()) return null
 
-  return <MenuItem onTouchTap={() => AppStore.menuIsOpen = false}><Link to={to}>{children}</Link></MenuItem>
+  return <MenuItem onTouchTap={() => globalStore.menuIsOpen = false}><Link to={to}>{children}</Link></MenuItem>
 }
 
 const ProtectedRoute = ({component: Component, ...rest}) => (

@@ -79,6 +79,7 @@
     "react-simple-dropdown": "^2.0.0",
     "react-stripe-checkout": "^2.2.5",
     "react-tap-event-plugin": "2.0.1",
+    "styled-components": "1.4.4",
     "timekeeper": "1.0.0",
     "trae": "^1.4.0",
     "url-parse": "^1.1.8"

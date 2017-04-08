@@ -1,7 +1,7 @@
 /* global localStorage */
 
 import firebase from 'firebase'
-import store from './stores/global-store'
+import globalStore from './stores/global-store'
 import geolocationWatcher from './stores/geolocation-watcher'
 
 let config = {
@@ -20,8 +20,12 @@ export const auth = firebaseApp.auth()
 
 export const storageKey = 'FIREBASE_AUTH'
 
+// export const isAuthenticated = () => {
+//   return !!auth.currentUser || !!localStorage.getItem(storageKey)
+// }
+
 export const isAuthenticated = () => {
-  return !!auth.currentUser || !!localStorage.getItem(storageKey)
+  return !!globalStore.profile
 }
 
 export const facebookProvider = new firebase.auth.FacebookAuthProvider()
@@ -36,7 +40,7 @@ export const login = (user) => {
     email,
     photoURL
   })
-  store.profile = user
+  globalStore.profile = user
   stopGeoWatcher = geolocationWatcher((coords) => {
     db.ref('/users').child(uid).update({
       coords: coords
@@ -47,19 +51,19 @@ export const login = (user) => {
 export const logout = () => {
   window.localStorage.removeItem(storageKey)
   stopGeoWatcher && stopGeoWatcher()
-  if (store.profile) {
-    db.ref('/users').child(store.profile.uid).update({
+  if (globalStore.profile) {
+    db.ref('/users').child(globalStore.profile.uid).update({
       isOnline: false
     })
     auth.signOut()
-      .then(store.reset)
+      .then(globalStore.reset)
       .catch((message) => console.error('logout error: ', message))
   }
 }
 
 export const setUserOffline = () => {
-  if (!store.profile) return false
-  db.ref('/users').child(store.profile.uid).update({
+  if (!globalStore.profile) return false
+  db.ref('/users').child(globalStore.profile.uid).update({
     isOnline: false
   })
 }
