@@ -11,7 +11,8 @@ const defaultState = {
   profile: null,
   alerts: [],
   tokenCreatedAt: null,
-  lastVisitedProfiles: []
+  lastVisitedProfiles: [],
+  menuIsOpen: false
 }
 
 const globalStore = mobxStored(`globalStore`, defaultState)

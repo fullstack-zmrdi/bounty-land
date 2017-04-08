@@ -36,9 +36,6 @@ class Login extends React.Component {
         {redirectToReferrer && (
           <Redirect to={from || '/'} />
         )}
-        {from && (
-          <p>You must log in to view the page at {from.pathname}</p>
-        )}
         <button onClick={this.processLogin}>Login via Facebook</button>
       </section>
     )
