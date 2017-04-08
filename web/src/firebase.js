@@ -36,7 +36,8 @@ export const login = (user) => {
     isOnline: true,
     displayName,
     email,
-    photoURL
+    photoURL,
+    uid
   })
   globalStore.profile = user
   stopGeoWatcher = geolocationWatcher((coords) => {

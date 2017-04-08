@@ -8,7 +8,6 @@
     "lintf": "standard --fix",
     "build": "NODE_ENV=production webpack --bail",
     "devbuild": "NODE_ENV=development webpack -d --bail",
-    "precommit": "npm run lintf",
     "pretest": "standard",
     "flow": "flow check",
     "test": "ava",

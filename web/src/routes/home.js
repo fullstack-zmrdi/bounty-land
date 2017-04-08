@@ -31,15 +31,16 @@ class Home extends Component {
     const users = this.users
       .filter(({coords}) => coords)
       .map(({coords, ...user}) => <Marker icon={{
-          url: user.photoURL,
-          anchor: new google.maps.Point(32, 32),
-          scaledSize: new google.maps.Size(64, 64)
-        }}
-          onClick={(ev) => {}}
-          key={user.uid} position={{lat: coords.latitude, lng: coords.longitude}}
-          name={'Current location'} style={{
-            opacity: 0.5
-          }} />)
+        url: user.photoURL,
+        anchor: new google.maps.Point(32, 32),
+        scaledSize: new google.maps.Size(64, 64)
+      }}
+        onClick={(ev) => {}}
+        key={user.uid}
+        position={{lat: coords.latitude, lng: coords.longitude}}
+        name={'Current location'} style={{
+          opacity: 0.5
+        }} />)
     return (
       <Async promise={window.gmapsPromise} before={() => {
         return <div />
