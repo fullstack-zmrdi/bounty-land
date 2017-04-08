@@ -2,14 +2,18 @@ import React, { Component } from 'react'
 import {Tabs, Tab} from 'material-ui/Tabs'
 import {observer} from 'mobx-react'
 import {observable} from 'mobx'
+import trae from 'trae'
 import StripeCheckout from 'react-stripe-checkout'
 import globalStore from '../stores/global-store'
 import BoundInput from '../components/bound-input'
+import {db} from '../firebase'
 
 const state = observable({
   tab: 'top up',
-  topUpAmount: 200
+  topUpAmount: 200,
+  paymentProcessing: false
 })
+
 @observer
 class Wallet extends Component {
   render () {
@@ -36,8 +40,23 @@ class Wallet extends Component {
             email={globalStore.profile.email}
             amount={state.topUpAmount * 100}
             currency={'CZK'}
-            token={(token) => {
-              console.log('token', token)
+            token={async (token) => {
+              const {email, uid} = globalStore.profile
+
+              state.paymentProcessing = true
+              await trae.post(`${process.env.API_URL}/charge`, {
+                amount: state.topUpAmount,
+                stripeEmail: email,
+                stripeToken: token
+              })
+              db.ref('/transactions').child(uid).push({
+                amount: state.topUpAmount,
+                from: 'topUp',
+                to: null,
+                createdAt: new Date()
+              })
+
+              state.tab = 'transaction'
             }}
             stripeKey='pk_test_74D3aKbuhEfxPvoe3HHDGKLb' />
         </div>
