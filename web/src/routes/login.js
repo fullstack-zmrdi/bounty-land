@@ -3,7 +3,7 @@ import {
   Redirect
 } from 'react-router-dom'
 import { auth, facebookProvider, login } from '../firebase'
-import styled from 'styled-components';
+import styled from 'styled-components'
 import { RaisedButton } from 'material-ui'
 
 const LoginScreen = styled.div`
@@ -14,7 +14,7 @@ const LoginScreen = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
+`
 
 const Logo = styled.img`
   width: 50%;
@@ -54,8 +54,8 @@ class Login extends React.Component {
         {redirectToReferrer && (
           <Redirect to={from || '/'} />
         )}
-        <Logo src="/images/logo.png" />
-        <RaisedButton onTouchTap={this.processLogin} label="Login" />
+        <Logo src='/images/logo.png' />
+        <RaisedButton onTouchTap={this.processLogin} label='Login' />
       </LoginScreen>
     )
   }

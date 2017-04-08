@@ -16,8 +16,18 @@ export default (appHtml, cssLink = false) => {
       <body>
         <div id='wrapper' dangerouslySetInnerHTML={{__html: appHtml}} />
         <script src='/bundle.js' />
+        <script dangerouslySetInnerHTML={{
+          __html: `
+          window.gmapsPromise = new Promise((resolve, reject) => {
+            window.initMap = function (gmap) {
+              console.log('map init')
+              resolve(window.google.maps)
+            }
+          })
+          `
+        }} />
         <script async defer
-          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}`} />
+          src={`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_MAPS_API_KEY}&callback=initMap`} />
       </body>
     </html>
   )

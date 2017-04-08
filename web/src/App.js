@@ -14,10 +14,8 @@ import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
 import { Drawer, MenuItem, AppBar } from 'material-ui'
 import { auth, isAuthenticated, login, logout } from './firebase'
-import injectTapEventPlugin from 'react-tap-event-plugin'
-import globalStore from './stores/global-store'
 
-injectTapEventPlugin()
+import globalStore from './stores/global-store'
 
 @observer
 class App extends React.Component {
@@ -48,23 +46,23 @@ class App extends React.Component {
             <div>
               {isAuthenticated() && <div>
                 <AppBar
-                  title="Title"
-                  iconClassNameRight="muidocs-icon-navigation-expand-more"
+                  title='Title'
+                  iconClassNameRight='muidocs-icon-navigation-expand-more'
                   onLeftIconButtonTouchTap={this.toggleMenu}
                 /><Drawer
-                docked={false}
-                width={200}
-                open={globalStore.menuIsOpen}
-                onRequestChange={(open) => globalStore.menuIsOpen = open}
-              >
-                <MenuItem onTouchTap={this.toggleMenu}><Link to='/'>Home</Link></MenuItem>
-                <ProtectedLink to='/profile'>Profile</ProtectedLink>
-                <ProtectedLink to='/wallet'>Wallet</ProtectedLink>
-                {!isAuthenticated()
-                  ? <MenuItem onTouchTap={this.toggleMenu}><Link to='/login'>Login</Link></MenuItem>
-                  : <MenuItem onTouchTap={this.processLogout}>Logout</MenuItem>
-                }
-              </Drawer>
+                  docked={false}
+                  width={200}
+                  open={globalStore.menuIsOpen}
+                  onRequestChange={(open) => globalStore.menuIsOpen = open}
+                >
+                  <MenuItem onTouchTap={this.toggleMenu}><Link to='/'>Map</Link></MenuItem>
+                  <ProtectedLink to='/profile'>Profile</ProtectedLink>
+                  <ProtectedLink to='/wallet'>Wallet</ProtectedLink>
+                  {!isAuthenticated()
+                    ? <MenuItem onTouchTap={this.toggleMenu}><Link to='/login'>Login</Link></MenuItem>
+                    : <MenuItem onTouchTap={this.processLogout}>Logout</MenuItem>
+                  }
+                </Drawer>
               </div>}
 
               <ProtectedRoute exact path='/' component={Routes.Home} />

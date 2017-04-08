@@ -47,7 +47,7 @@ class Wallet extends Component {
               await trae.post(`${process.env.API_URL}/charge`, {
                 amount: state.topUpAmount,
                 stripeEmail: email,
-                stripeToken: token
+                stripeToken: token.id
               })
               db.ref('/transactions').child(uid).push({
                 amount: state.topUpAmount,
