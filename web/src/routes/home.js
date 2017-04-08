@@ -14,6 +14,7 @@ class Home extends Component {
 
   componentWillMount () {
     db.ref('/users').on('value', (users) => {
+      console.log('novy hodnoty')
       this.users = Object.values(users.val())
     })
 
@@ -29,7 +30,10 @@ class Home extends Component {
 
   render () {
     const users = this.users
-      .filter(({coords}) => coords)
+      .filter(({coords, isOnline, lastTimeOnline}) => {
+        if (!lastTimeOnline) return false
+        return coords && (new Date() - new Date(lastTimeOnline)) <= (60 * 1000)
+      })
       .map(({coords, ...user}) => <Marker icon={{
         url: user.photoURL,
         anchor: new google.maps.Point(32, 32),

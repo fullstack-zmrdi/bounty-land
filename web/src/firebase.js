@@ -33,11 +33,12 @@ export const login = (user) => {
   const {uid, displayName, email, photoURL} = user
   window.localStorage.setItem(storageKey, uid)
   db.ref('/users').child(uid).update({
-    isOnline: true,
+    logged: true,
     displayName,
     email,
     photoURL,
-    uid
+    uid,
+    lastTimeOnline: new Date()
   })
   globalStore.profile = user
   stopGeoWatcher = geolocationWatcher((coords) => {
@@ -52,7 +53,7 @@ export const logout = () => {
   stopGeoWatcher && stopGeoWatcher()
   if (globalStore.profile) {
     db.ref('/users').child(globalStore.profile.uid).update({
-      isOnline: false
+      logged: false
     })
     auth.signOut()
       .then(globalStore.reset)
@@ -63,8 +64,13 @@ export const logout = () => {
 export const setUserOffline = () => {
   if (!globalStore.profile) return false
   db.ref('/users').child(globalStore.profile.uid).update({
-    isOnline: false
+    logged: false
   })
 }
 
-window.onbeforeunload = setUserOffline
+setInterval(() => {
+  if (!globalStore.profile) return false
+  db.ref('/users').child(globalStore.profile.uid).update({
+    lastTimeOnline: new Date()
+  })
+}, 10000)
