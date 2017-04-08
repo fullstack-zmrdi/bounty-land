@@ -3,15 +3,21 @@
 import React, { Component } from 'react'
 import {observer} from 'mobx-react'
 import {observable} from 'mobx'
+import {Link} from 'react-router-dom'
 import Map, {Marker} from 'google-maps-react'
 import Async from 'react-promise'
 import {db} from '../firebase'
+import {FloatingActionButton} from 'material-ui'
+import ContentAdd from 'material-ui/svg-icons/content/add'
+import globalStore from '../stores/global-store'
 
 @observer
 class Home extends Component {
   @observable users = []
   @observable challenges = []
-
+  componentDidMount () {
+    globalStore.title = 'Map'
+  }
   componentWillMount () {
     db.ref('/users').on('value', (users) => {
       console.log('novy hodnoty')
@@ -46,24 +52,37 @@ class Home extends Component {
           opacity: 0.5
         }} />)
     return (
-      <Async promise={window.gmapsPromise} before={() => {
-        return <div />
-      }} then={() => {
-        return <Map
-          google={window.google}
-          zoom={14}
-          options={{cooperative: "greedy"}}
-          className='map'
-          initialCenter={{
-            lat: 50.08804,
-            lng: 14.42076
-          }}
-          centerAroundCurrentLocation
-        >
-          {users}
+      <div>
+        <Link to='/add'>
+          <FloatingActionButton style={{
+            position: 'fixed',
+            right: 40,
+            bottom: 40,
+            zIndex: 30
+          }}>
+          <ContentAdd />
+        </FloatingActionButton>
+        </Link>
 
-        </Map>
-      }} />
+        <Async promise={window.gmapsPromise} before={() => {
+          return <div />
+        }} then={() => {
+          return <Map
+            google={window.google}
+            zoom={14}
+            options={{cooperative: "greedy"}}
+            className='map'
+            initialCenter={{
+              lat: 50.08804,
+              lng: 14.42076
+            }}
+            centerAroundCurrentLocation
+          >
+            {users}
+
+          </Map>
+        }} />
+      </div>
     )
   }
 }
