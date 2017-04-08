@@ -30,9 +30,9 @@ class Home extends Component {
 
   render () {
     const users = this.users
-      .filter(({coords, isOnline, lastTimeOnline}) => {
+      .filter(({coords, isOnline, logged, lastTimeOnline}) => {
         if (!lastTimeOnline) return false
-        return coords && (new Date() - new Date(lastTimeOnline)) <= (60 * 1000)
+        return coords && logged && (new Date() - new Date(lastTimeOnline)) <= (60 * 1000)
       })
       .map(({coords, ...user}) => <Marker icon={{
         url: user.photoURL,
