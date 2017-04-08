@@ -8,7 +8,6 @@ import {
 import './App.scss'
 import * as Routes from './routes'
 import { observer } from 'mobx-react'
-import { observable } from 'mobx'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme'
 import getMuiTheme from 'material-ui/styles/getMuiTheme'
@@ -53,7 +52,9 @@ class App extends React.Component {
                   docked={false}
                   width={200}
                   open={globalStore.menuIsOpen}
-                  onRequestChange={(open) => globalStore.menuIsOpen = open}
+                  onRequestChange={(open) => {
+                    globalStore.menuIsOpen = open
+                  }}
                 >
                   <MenuItem onTouchTap={this.toggleMenu}><Link to='/'>Map</Link></MenuItem>
                   <ProtectedLink to='/profile'>Profile</ProtectedLink>
@@ -80,7 +81,9 @@ class App extends React.Component {
 const ProtectedLink = ({to, children}) => {
   if (!isAuthenticated()) return null
 
-  return <MenuItem onTouchTap={() => globalStore.menuIsOpen = false}><Link to={to}>{children}</Link></MenuItem>
+  return <MenuItem onTouchTap={() => {
+    globalStore.menuIsOpen = false
+  }} ><Link to={to}>{children}</Link></MenuItem>
 }
 
 const ProtectedRoute = ({component: Component, ...rest}) => (

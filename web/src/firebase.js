@@ -1,5 +1,3 @@
-/* global localStorage */
-
 import firebase from 'firebase'
 import globalStore from './stores/global-store'
 import geolocationWatcher from './stores/geolocation-watcher'
@@ -34,7 +32,7 @@ let stopGeoWatcher
 export const login = (user) => {
   const {uid, displayName, email, photoURL} = user
   window.localStorage.setItem(storageKey, uid)
-  db.ref('/users').child(uid).set({
+  db.ref('/users').child(uid).update({
     isOnline: true,
     displayName,
     email,
