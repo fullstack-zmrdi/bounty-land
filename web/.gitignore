@@ -1,3 +1,5 @@
+
+
 .env
 static/bundle.js
 static/tgm.css
@@ -51,3 +53,6 @@ node_modules
 .vscode
 flow-typed/npm
 flow-coverage
+
+!static/images
+!static/images/*

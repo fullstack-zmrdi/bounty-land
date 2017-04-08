@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="33px" viewBox="0 0 33 33" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43 (38999) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 16</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="12.5" cy="12.5" r="12.5"></circle>
+        <filter x="-26.0%" y="-22.0%" width="152.0%" height="152.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.32 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2.-Map" transform="translate(-220.000000, -270.000000)">
+            <g id="Group-16" transform="translate(224.000000, 273.000000)">
+                <g id="Oval">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#F3F3F3" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <path d="M17.185485,4 C17.185485,4 15.8097063,5.33520212 14.321758,5.87289449 C3.30129499,9.85959344 7.94932794,17.626922 8.10037467,17.6526275 C8.10037467,17.6526275 8.71858281,16.576393 9.55348246,15.9622213 C14.8503153,12.0685722 15.9273996,7.58581965 15.9273996,7.58581965 C15.9273996,7.58581965 14.738358,12.9797388 10.02553,16.3356955 C8.9849859,17.0766955 8.2803136,18.9007281 7.98161922,20.723911 C7.98161922,20.723911 8.72028235,20.4260664 9.0372468,20.3455507 C9.16088843,19.5380561 9.41985603,18.7647648 9.85706302,18.0743262 C16.4427855,18.8584521 18.6003531,13.5516344 18.8818396,11.7010464 C19.5472101,7.33025113 17.185485,4 17.185485,4" id="Page-1" fill="#2C9D5D"></path>
+            </g>
+        </g>
+    </g>
+</svg>

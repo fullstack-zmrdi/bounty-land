@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="126px" height="43px" viewBox="0 0 126 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43 (38999) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="122" height="36" rx="2"></rect>
+        <filter x="-4.9%" y="-11.1%" width="109.8%" height="133.3%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.24 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feOffset dx="0" dy="0" in="SourceAlpha" result="shadowOffsetOuter2"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter2" result="shadowBlurOuter2"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.12 0" type="matrix" in="shadowBlurOuter2" result="shadowMatrixOuter2"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="shadowMatrixOuter2"></feMergeNode>
+            </feMerge>
+        </filter>
+        <polygon id="path-3" points="1.18309858e-05 0 20.9715465 0 20.9715465 21.5140446 1.18309858e-05 21.5140446 1.18309858e-05 3.44985694e-15"></polygon>
+        <polygon id="path-5" points="20.9715465 21.5341575 20.9715465 21.727208 0 21.727208 0 0.0200885638 20.9715465 0.0200885638 20.9715465 21.5341575 20.9715583 0.0200946329 1.18309859e-05 0.0200946329 1.18309859e-05 21.5341575"></polygon>
+        <polygon id="path-7" points="0.012588169 18.5713007 8.46003042 18.5713007 8.46003042 0.0105115989 0.012588169 0.0105115989 0.012588169 18.5713007"></polygon>
+    </defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="6.-Challenge-done---share" transform="translate(-178.000000, -355.000000)">
+            <g id="Group-4" transform="translate(180.000000, 357.480011)">
+                <g id="button">
+                    <g id="button-bg">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                        <use fill="#425F9C" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    </g>
+                    <text id="SHARE" font-family="Roboto-Medium, Roboto" font-size="14" font-weight="400" letter-spacing="0.5" fill="#FFFFFF">
+                        <tspan x="55.3349609" y="24">SHARE </tspan>
+                    </text>
+                </g>
+                <g id="Group" transform="translate(7.000000, 7.000000)">
+                    <g id="Page-1" transform="translate(0.000000, 0.121381)">
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <g id="Clip-2"></g>
+                        <path d="M1.76064,-1.82071575e-05 L19.210871,-1.82071575e-05 C20.1797104,-1.82071575e-05 20.9715583,0.812324471 20.9715583,1.80443248 L20.9715583,19.7077125 C20.9715583,20.701702 20.1797104,21.5140446 19.210871,21.5140446 L1.76064,21.5140446 C0.791800563,21.5140446 1.18309858e-05,20.701702 1.18309858e-05,19.7077125 L1.18309858e-05,1.80443248 C1.18309858e-05,0.812324471 0.791800563,-1.82071575e-05 1.76064,-1.82071575e-05" id="Fill-1" fill="#425F9C" mask="url(#mask-4)"></path>
+                    </g>
+                    <g id="Page-1">
+                        <g id="Group-3" transform="translate(0.000000, 0.040602)">
+                            <mask id="mask-6" fill="white">
+                                <use xlink:href="#path-5"></use>
+                            </mask>
+                            <g id="Clip-2"></g>
+                            <path d="M1.76064,0.0200946329 L19.210871,0.0200946329 C20.1797104,0.0200946329 20.9715583,0.832437311 20.9715583,1.82454532 L20.9715583,19.7278254 C20.9715583,20.7218148 20.1797104,21.5341575 19.210871,21.5341575 L1.76064,21.5341575 C0.791800563,21.5341575 1.18309858e-05,20.7218148 1.18309858e-05,19.7278254 L1.18309858e-05,1.82454532 C1.18309858e-05,0.832437311 0.791800563,0.0200946329 1.76064,0.0200946329" id="Fill-1" fill="#425F9C" mask="url(#mask-6)"></path>
+                        </g>
+                        <g id="Group-6" transform="translate(8.459155, 3.196509)">
+                            <mask id="mask-8" fill="white">
+                                <use xlink:href="#path-7"></use>
+                            </mask>
+                            <g id="Clip-5"></g>
+                            <path d="M5.57965859,5.58068799 L5.57965859,4.09540877 C5.57965859,3.37288807 6.04917127,3.20465393 6.3807938,3.20465393 L8.40974873,3.20465393 L8.40974873,0.0238635145 L5.61503324,0.0105115989 C2.51294873,0.0105115989 1.80681634,2.38460356 1.80681634,3.90235221 L1.80681634,5.58068799 L0.012588169,5.58068799 L0.012588169,9.29094255 L1.82172338,9.29094255 L1.82172338,18.5713128 L5.43993465,18.5713128 L5.43993465,9.29094255 L8.46003042,9.29094255 L8.45452901,5.58068799 L5.57965859,5.58068799 Z" id="Fill-4" fill="#FEFEFE" mask="url(#mask-8)"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="54px" height="44px" viewBox="0 0 54 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 43 (38999) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 7</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-15.2%" y="-13.9%" width="130.4%" height="138.9%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.245923913 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Welcome" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="6.-Challenge-done---share" transform="translate(-68.000000, -271.000000)" fill-rule="nonzero" fill="#00BBD3">
+            <g id="Group-7" transform="translate(72.000000, 273.000000)">
+                <g id="Group-9">
+                    <g id="1f49b" filter="url(#filter-1)">
+                        <path d="M22.9986946,6.96051897 C20.9739279,0.207518966 5.44892791,-4.82948103 0.711694573,7.62876897 C-4.56373876,21.505269 21.1586946,33.959019 22.9986946,35.999769 C24.8371612,34.378269 50.5626612,21.270519 45.2887612,7.61976897 C40.3859279,-5.06873103 24.4706946,0.623768966 22.9986946,6.96051897 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
