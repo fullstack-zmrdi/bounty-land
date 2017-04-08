@@ -1,0 +1,8 @@
+<html><head><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/><meta charset="utf-8"/><title>Bounty Land</title><link rel="icon" href="/img/bounty-land.png"/><link rel="stylesheet" href="/bounty-land.css"/></head><body><div id="wrapper">[object Object]</div><script src="/bundle.js"></script><script>
+          window.gmapsPromise = new Promise((resolve, reject) => {
+            window.initMap = function (gmap) {
+              console.log('map init')
+              resolve(window.google.maps)
+            }
+          })
+          </script><script async="" defer="" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBU0RR9G38MBT99Ik3smn87SWJH9WcBQQ&amp;callback=initMap"></script></body></html>

@@ -1,4 +1,6 @@
 require('babel-register')
+require('dotenv').config()
+
 const renderIndex = require('../render-index').default
 const fs = require('mz/fs')
 const React = require('react')
