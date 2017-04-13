@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
-import { View, Platform } from 'react-native'
 import * as firebase from 'firebase'
-import Toast from 'react-native-toast'
-import { Header, Container, Content, Card, CardItem, Text, Body, H2, Button, Row, Form, Item, Label, Input, Tabs, Tab, TabHeading, Icon } from 'native-base'
+
+import { Body, Button, Card, CardItem, Container, Content, Form, H2, Header, Icon, Input, Item, Label, Row, Tab, TabHeading, Tabs, Text } from 'native-base'
+import { Platform, View } from 'react-native'
+import React, { Component } from 'react'
+
+import Toast from '@remobile/react-native-toast'
 import { WebView } from 'react-native'
 //import checkout from '../../checkout.html'
 

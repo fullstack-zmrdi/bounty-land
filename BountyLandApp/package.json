@@ -22,7 +22,6 @@
     "react-native-i18n": "^1.0.0",
     "react-native-maps": "^0.13.1",
     "react-native-navigation": "^2.0.0-experimental.299",
-    "react-native-toast": "^1.0.1",
     "react-native-vector-icons": "^4.0.0"
   },
   "devDependencies": {

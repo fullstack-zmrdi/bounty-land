@@ -1,14 +1,16 @@
-import React, { Component } from 'react'
-import { View, Platform } from 'react-native'
 import * as firebase from 'firebase'
-import Toast from 'react-native-toast'
-import { Container, Content, Card, CardItem, Text, Body, H2, Button,  Row, Form, Item, Label, Input } from 'native-base'
+
+import { Body, Button, Card, CardItem, Container, Content, Form, H2, Input, Item, Label, Row, Text } from 'native-base'
+import { Platform, View } from 'react-native'
+import React, { Component } from 'react'
+
+import Toast from '@remobile/react-native-toast'
 
 class Challenges extends Component {
     render () {
         return (
             <View>
-                
+
             </View>
         )
     }
