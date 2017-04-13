@@ -133,6 +133,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-i18n')
     compile 'com.android.support:multidex:1.0.1'
     compile project(':react-native-vector-icons')
     compile project(':react-native-toast')
