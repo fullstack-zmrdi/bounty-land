@@ -21,14 +21,14 @@
     "react-native-i18n": "^1.0.0",
     "react-native-maps": "^0.13.1",
     "react-native-navigation": "^2.0.0-experimental.285",
-    "react-native-swiper": "^1.5.4",
     "react-native-toast": "^1.0.1",
-    "react-native-vector-icons": "^4.0.0",
-    "styled-components": "1.4.4"
+    "react-native-vector-icons": "^4.0.0"
   },
   "devDependencies": {
+    "babel-eslint": "^7.2.2",
     "babel-jest": "19.0.0",
     "babel-preset-react-native": "1.9.1",
+    "eslint-plugin-flowtype": "^2.30.4",
     "flow-bin": "0.43.1",
     "jest": "19.0.2",
     "react-test-renderer": "16.0.0-alpha.6",
@@ -37,5 +37,21 @@
   },
   "jest": {
     "preset": "react-native"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "plugins": [
+      "flowtype"
+    ],
+    "globals": [
+      "fetch",
+      "__DEV__"
+    ],
+    "ignore": [
+      ".vscode",
+      "android",
+      "ios",
+      "app/locales"
+    ]
   }
 }
