@@ -6,6 +6,12 @@ import * as firebase from 'firebase'
 import { registerScreens } from './scenes'
 import Auth from './auth'
 import { firebaseConfig } from './config'
+import I18n from 'react-native-i18n'
+import czechTranslations from './locales/cs'
+import englishTranslations from './locales/en'
+
+const DEFAULT_LOCALE = I18n.locale.split('-')[0]
+const handleMissing = (scope) => `${scope || 'unknown'}`
 
 // $FlowFixMe: this is just development option
 console.disableYellowBox = true
@@ -33,6 +39,7 @@ class App {
       }
     })
 
+    this.configureI18n()
     this.initFirebase()
   }
 
@@ -68,8 +75,8 @@ class App {
   startAppAsUnauthenticatedUser () {
     Navigation.startSingleScreenApp({
       screen: {
-        screen: 'HOME',
-        title: 'Bounty Land'
+        screen: 'SIGN_IN',
+        title: 'Sign in'
       }
     })
   }
@@ -131,10 +138,37 @@ class App {
   }
 
   /**
+   * Set i18n locale
+   */
+  setLocale (locale: string) {
+    // console.log(locale)
+    I18n.locale = locale
+  }
+
+  /**
+   * Configure i18n
+   */
+  configureI18n () {
+    I18n.fallbacks = true
+    I18n.default_locale = DEFAULT_LOCALE
+    I18n.available_locales = ['cs', 'en']
+    I18n.translations = {
+      cs: czechTranslations,
+      en: englishTranslations
+    }
+    I18n.missingTranslation = handleMissing
+    I18n.missingPlaceholder = handleMissing
+  }
+
+  /**
    * Init firebase
    */
   initFirebase () {
     console.log('init firebase')
+    if (this.firebaseInitialized) {
+      return
+    }
+    this.firebaseInitialized = true
     firebase.initializeApp(firebaseConfig)
   }
 }
