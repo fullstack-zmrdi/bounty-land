@@ -5,7 +5,6 @@ import android.support.multidex.MultiDex;
 
 import com.jajija.bountyland.BuildConfig;
 import com.oblador.vectoricons.VectorIconsPackage;
-import com.remobile.toast.RCTToastPackage;
 
 import co.apptailor.googlesignin.RNGoogleSigninPackage;
 import com.magus.fblogin.FacebookLoginPackage;
