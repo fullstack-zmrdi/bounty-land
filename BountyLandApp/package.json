@@ -9,6 +9,7 @@
     "clean": "rm -fr $TMPDIR/react-* && watchman watch-del-all"
   },
   "dependencies": {
+    "@remobile/react-native-toast": "^1.0.6",
     "firebase": "^3.7.5",
     "lodash": "^4.17.4",
     "material-colors": "^1.2.5",
@@ -16,11 +17,11 @@
     "react": "16.0.0-alpha.6",
     "react-native": "0.43.2",
     "react-native-camera": "^0.6.0",
-    "react-native-facebook-login": "^1.4.0",
+    "react-native-facebook-login": "github:magus/react-native-facebook-login",
     "react-native-google-signin": "^0.9.0",
     "react-native-i18n": "^1.0.0",
     "react-native-maps": "^0.13.1",
-    "react-native-navigation": "^2.0.0-experimental.285",
+    "react-native-navigation": "^2.0.0-experimental.299",
     "react-native-toast": "^1.0.1",
     "react-native-vector-icons": "^4.0.0"
   },
