@@ -1,14 +1,15 @@
  /* @flow */
-import { Platform } from 'react-native'
-import { Navigation } from 'react-native-navigation'
+
 import * as firebase from 'firebase'
 
-import { registerScreens } from './scenes'
 import Auth from './auth'
-import { firebaseConfig } from './config'
 import I18n from 'react-native-i18n'
+import { Navigation } from 'react-native-navigation'
+import { Platform } from 'react-native'
 import czechTranslations from './locales/cs'
 import englishTranslations from './locales/en'
+import { firebaseConfig } from './config'
+import { registerScreens } from './scenes'
 
 const DEFAULT_LOCALE = I18n.locale.split('-')[0]
 const handleMissing = (scope) => `${scope || 'unknown'}`
@@ -47,7 +48,7 @@ class App {
    * Start app
    */
   startApp (authData) {
-    if (!authData || !authData.isAuthenticated) {
+    if (!authData /* || !authData.isAuthenticated*/) {
       console.log('start app dont have user')
       this.startAppAsUnauthenticatedUser()
     } else {

@@ -1,6 +1,7 @@
+import { Body, Button, Card, CardItem, Container, Content, Form, H2, H3, Input, Item, Label, ListItem, Row, Text, Textarea } from 'native-base';
+import { Image, View } from 'react-native'
 import React, {Component} from 'react'
-import { View, Image } from 'react-native'
-import { Container, Content, Card, CardItem, Text, Body, H2, H3, Button,  Row, Form, Item, Label, Input, ListItem , Textarea} from 'native-base';
+
 import Auth from '../../auth'
 import colors from 'material-colors'
 import { navigatorStyle } from '../../theme'
@@ -20,7 +21,7 @@ class Profile extends Component {
   componentDidMount () {
     this.auth.getAuthData()
     .then((authData) => {
-      console.log('have auth data cdnnnn', authData)
+      // console.log('have auth data cdnnnn', authData)
       this.setState({ authData })
     })
   }

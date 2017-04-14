@@ -15,7 +15,7 @@
     "material-colors": "^1.2.5",
     "native-base": "^2.1.1",
     "react": "16.0.0-alpha.6",
-    "react-native": "0.43.2",
+    "react-native": "^0.43.3",
     "react-native-camera": "^0.6.0",
     "react-native-facebook-login": "github:magus/react-native-facebook-login",
     "react-native-google-signin": "^0.9.0",
