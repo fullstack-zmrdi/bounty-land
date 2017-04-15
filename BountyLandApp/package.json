@@ -13,15 +13,15 @@
     "firebase": "^3.7.5",
     "lodash": "^4.17.4",
     "material-colors": "^1.2.5",
-    "native-base": "^2.1.1",
-    "react": "16.0.0-alpha.6",
-    "react-native": "^0.43.3",
+    "native-base": "^2.1.0",
+    "react": "^15.4.2",
+    "react-native": "^0.42.3",
     "react-native-camera": "^0.6.0",
     "react-native-facebook-login": "github:magus/react-native-facebook-login",
     "react-native-google-signin": "^0.9.0",
     "react-native-i18n": "^1.0.0",
     "react-native-maps": "^0.13.1",
-    "react-native-navigation": "^2.0.0-experimental.299",
+    "react-native-navigation": "^2.0.0-experimental.256",
     "react-native-vector-icons": "^4.0.0"
   },
   "devDependencies": {
@@ -31,7 +31,7 @@
     "eslint-plugin-flowtype": "^2.30.4",
     "flow-bin": "0.43.1",
     "jest": "19.0.2",
-    "react-test-renderer": "16.0.0-alpha.6",
+    "react-test-renderer": "^15.4.2",
     "standard": "^10.0.1",
     "watchman": "^0.1.8"
   },
