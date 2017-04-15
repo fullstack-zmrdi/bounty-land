@@ -1,7 +1,7 @@
-import { DeviceEventEmitter, AsyncStorage, Platform } from 'react-native' //eslint-disable-line
+import { AsyncStorage, DeviceEventEmitter, Platform } from 'react-native' //eslint-disable-line
+
 import { FBLoginManager } from 'react-native-facebook-login'
 import { GoogleSignin } from 'react-native-google-signin'
-
 import { googleSignIn } from './config'
 
 class Auth {
@@ -42,12 +42,14 @@ class Auth {
 
   signInFacebook () {
     FBLoginManager.setLoginBehavior(FBLoginManager.LoginBehaviors.Native) // defaults to Native
-    FBLoginManager.loginWithPermissions(['email', 'user_friends'], (error, data) => {
+    FBLoginManager.loginWithPermissions(['email', 'user_friends', 'public_profile'], (error, data) => {
       if (!error) {
+        const authData = { isAuthenticated: true, type: 'facebook', user: data }
         console.log('facebook sign in', data)
-        this.setAuthData(data)
+
+        this.setAuthData(authData)
         .then(() => {
-          this.dispatchAuthChange({ isAuthenticated: true, type: 'facebook', user: data })
+          this.dispatchAuthChange(authData)
         })
       } else {
         console.log('facebook sign in err', error)
@@ -64,9 +66,10 @@ class Auth {
     })
     .then((user) => {
       console.log('google sign in', user)
-      this.setAuthData(user)
+      const authData = { isAuthenticated: true, type: 'google', user }
+      this.setAuthData(authData)
       .then(() => {
-        this.dispatchAuthChange({ isAuthenticated: true, type: 'google', user })
+        this.dispatchAuthChange(authData)
       })
     })
     .catch((err) => {
@@ -79,8 +82,14 @@ class Auth {
     this.getAuthData()
     .then((authData) => {
       if (!authData) {
-        this.dispatchAuthChange({ isAuthenticated: false, type: 'unknown' })
+        const _authData = { isAuthenticated: false, type: 'unknown' }
+        this.setAuthData(_authData)
+        .then(() => {
+          this.dispatchAuthChange(_authData)
+        })
       }
+
+      console.log('auth data', authData)
 
       if (authData.type === 'facebook') {
         this.signOutFacebook()
@@ -97,7 +106,11 @@ class Auth {
     FBLoginManager.logout((error, data) => {
       if (!error) {
         console.log('facebook sign out succ', data)
-        this.dispatchAuthChange({ isAuthenticated: false, type: 'facebook', user: data })
+        const authData = { isAuthenticated: false, type: 'facebook' }
+        this.setAuthData(authData)
+        .then(() => {
+          this.dispatchAuthChange(authData)
+        })
       } else {
         console.log('facebook sign out err', error)
       }
@@ -108,7 +121,11 @@ class Auth {
     GoogleSignin.signOut()
     .then(() => {
       console.log('google sign out succ')
-      this.dispatchAuthChange({ isAuthenticated: false, type: 'google' })
+      const authData = { isAuthenticated: false, type: 'google' }
+      this.setAuthData(authData)
+      .then(() => {
+        this.dispatchAuthChange(authData)
+      })
     })
     .catch((err) => {
       console.log('google sign out err', err)

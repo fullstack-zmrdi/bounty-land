@@ -48,7 +48,7 @@ class App {
    * Start app
    */
   startApp (authData) {
-    if (!authData /* || !authData.isAuthenticated*/) {
+    if (!authData || !authData.isAuthenticated) {
       console.log('start app dont have user')
       this.startAppAsUnauthenticatedUser()
     } else {
