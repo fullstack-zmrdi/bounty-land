@@ -1,14 +1,18 @@
+import * as firebase from "firebase"
+
+import { Body, Button, Card, CardItem, Container, Content, Form, H2, Input, Item, Label, Row, Text } from 'native-base';
+import { Image, Platform, View } from 'react-native'
 import React, {Component} from 'react'
 
-import { View, Platform } from 'react-native'
-import * as firebase from "firebase"
-import Toast from 'react-native-toast'
-
-import { Container, Content, Card, CardItem, Text, Body, H2, Button,  Row, Form, Item, Label, Input} from 'native-base';
 import Auth from '../../auth'
+import Icon from 'react-native-vector-icons/Zocial';
+import MapView from 'react-native-maps';
+import Toast from '@remobile/react-native-toast'
 
 class SignIn extends Component {
-  static navigatorStyle = {}
+  static navigatorStyle = {
+     navBarHidden: true, // make the nav bar hidden
+  }
 
   constructor () {
     super()
@@ -25,12 +29,42 @@ class SignIn extends Component {
 
   render () {
       return (
-        <Container style={{ padding: 16 }}>
-          <Content>
-            <Button onPress={() => this.signInFacebook()}><Text>sign_in_fb</Text></Button>
-            <Button onPress={() => this.signInGoogle()}><Text>sign_in_google</Text></Button>
-          </Content>
+        <Container>
+          <Image
+            source={require('../../images/bounty_bg.png')}
+            style={{ flex: 1, resizeMode: 'cover', alignItems: 'center', justifyContent: 'center', width: null, height: null }}>
+                <View>
+                <View style={{ width: 200, height: 200, alignSelf: 'center', marginBottom: 25 }}>
+                  <Image
+                    style={{ resizeMode: 'contain', width: null, height: null, flex: 1 }}
+                    source={require('../../images/logo.png')}/>
+                </View>
+                <View style={{ marginBottom: 10 }}>
+                  <Icon.Button
+                      style={{ width: 270, justifyContent: 'center' }}
+                      name="facebook"
+                      color={'#fff'}
+                      backgroundColor="#3b5998"
+                      onPress={() => this.signInFacebook()}>
+                      <Text style={{ color: '#fff' }}>Sign in with Facebook</Text>
+                    </Icon.Button>
+                </View>
+                <View>
+                  <Icon.Button
+                    name="google"
+                    style={{ width: 270, justifyContent: 'center' }}
+                    color={'#fff'}
+                    backgroundColor='#ff0000'
+                    onPress={() => this.signInGoogle()}>
+                    <Text  style={{ color: '#fff' }}>Sign in with Google</Text>
+                  </Icon.Button>
+                </View>
+
+
+                </View>
+          </Image>
         </Container>
+
       )
   }
 }

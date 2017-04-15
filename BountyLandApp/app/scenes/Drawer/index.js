@@ -1,7 +1,6 @@
 import React, {Component} from 'react'
-
 import { View, NativeModules } from 'react-native'
-
+import I18n from 'react-native-i18n'
 import { Container, Content, Button, Text, List, ListItem, Left, Body, Icon } from 'native-base'
 import colors from 'material-colors'
 
@@ -21,18 +20,18 @@ class Drawer extends Component {
           </ListItem>
           <ListItem onPress={() => this.pushScreen({
             screen: 'PROFILE',
-            title: 'profile'
+            title: I18n.t('profile')
           })}>
-            <Text>{'profile'}</Text>
+            <Text>{I18n.t('profile')}</Text>
           </ListItem>
           <ListItem>
-            <Text>{'challenges'}</Text>
+            <Text>{I18n.t('challenges')}</Text>
           </ListItem>
           <ListItem>
-            <Text>{'wallet'}</Text>
+            <Text>{I18n.t('wallet')}</Text>
           </ListItem>
           <ListItem>
-            <Text>{'about'}</Text>
+            <Text>{I18n.t('about')}</Text>
           </ListItem>
         </Content>
       </Container>

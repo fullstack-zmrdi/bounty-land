@@ -68,7 +68,7 @@
 	<string>1</string>
 	<key>FacebookAppID</key>
 	<string>388597194866529</string>
-	<key>FacebookBundleName</key>
+	<key>FacebookDisplayName</key>
 	<string>BountyLandApp</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
