@@ -34,10 +34,10 @@ class App {
 
     Auth.listenAuthChange((authData) => {
       console.log('auth change', authData)
-
       if (!this.authData || (this.authData.isAuthenticated !== authData.isAuthenticated)) {
         this.startApp(authData)
       }
+      this.authData = authData
     })
 
     this.configureI18n()

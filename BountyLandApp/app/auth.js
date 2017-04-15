@@ -1,6 +1,6 @@
+import { AccessToken, GraphRequest, GraphRequestManager, LoginManager } from 'react-native-fbsdk'
 import { AsyncStorage, DeviceEventEmitter, Platform } from 'react-native' //eslint-disable-line
 
-import { FBLoginManager } from 'react-native-facebook-login'
 import { GoogleSignin } from 'react-native-google-signin'
 import { googleSignIn } from './config'
 
@@ -40,20 +40,51 @@ class Auth {
     }
   }
 
-  signInFacebook () {
-    FBLoginManager.setLoginBehavior(FBLoginManager.LoginBehaviors.Native) // defaults to Native
-    FBLoginManager.loginWithPermissions(['email', 'user_friends', 'public_profile'], (error, data) => {
-      if (!error) {
-        const authData = { isAuthenticated: true, type: 'facebook', user: data }
-        console.log('facebook sign in', data)
+  getFacebookUserProfile () {
+    return new Promise((resolve, reject) => {
+      const req = new GraphRequest('/me', {
+        parameters: {
+          'fields': {
+            'string': 'email,name,friends,picture'
+          }
+        }
+      }, (err, res) => {
+        if (err) {
+          return reject(err)
+        }
+        return resolve(res)
+      })
+      new GraphRequestManager().addRequest(req).start()
+    })
+  }
 
-        this.setAuthData(authData)
-        .then(() => {
-          this.dispatchAuthChange(authData)
-        })
+  signInFacebook () {
+    // FBLoginManager.setLoginBehavior(FBLoginManager.LoginBehaviors.Native) // defaults to Native
+    const authData = { isAuthenticated: true, type: 'facebook', user: {} }
+    LoginManager.logInWithReadPermissions(['email', 'user_friends', 'public_profile'])
+    .then((result) => {
+      if (result.isCancelled) {
+        console.log('facebook sign in cancelled', result)
+        throw new Error('User cancelled login')
       } else {
-        console.log('facebook sign in err', error)
+        console.log('facebook sign in', result)
+        authData.loginResult = result
+        return AccessToken.getCurrentAccessToken()
       }
+    })
+    .then((token) => {
+      authData.token = token
+      return this.getFacebookUserProfile()
+    })
+    .then((user) => {
+      authData.user = user
+      this.setAuthData(authData)
+      .then(() => {
+        this.dispatchAuthChange(authData)
+      })
+    })
+    .catch((err) => {
+      console.log('facebook sign in err', err)
     })
   }
 
@@ -103,17 +134,11 @@ class Auth {
   }
 
   signOutFacebook () {
-    FBLoginManager.logout((error, data) => {
-      if (!error) {
-        console.log('facebook sign out succ', data)
-        const authData = { isAuthenticated: false, type: 'facebook' }
-        this.setAuthData(authData)
-        .then(() => {
-          this.dispatchAuthChange(authData)
-        })
-      } else {
-        console.log('facebook sign out err', error)
-      }
+    LoginManager.logOut()
+    const authData = { isAuthenticated: false, type: 'facebook' }
+    this.setAuthData(authData)
+    .then(() => {
+      this.dispatchAuthChange(authData)
     })
   }
 
